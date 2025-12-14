@@ -114,7 +114,7 @@
 <body>
   <div class="container">
     <h1>HJ – Holly Jolly Christmas</h1>
-    <p class="subtitle">Preview mode: all boxes unlocked</p>
+    <p class="subtitle">One box can be opened each day 🤍</p>
     <div class="grid" id="grid"></div>
   </div>
 
@@ -123,6 +123,13 @@
   </div>
 
   <script>
+    // ======================
+    // CONFIG
+    // ======================
+
+    const START_DATE = new Date('2025-12-14T00:00:00');
+    const TOTAL_BOXES = 12;
+    
     // ======================
     // DATA
     // ======================
@@ -161,6 +168,13 @@
       text: "I chose this song because it reminds me of you 💗",
       url: "https://youtu.be/YgF5p2QzhN4"
     };
+    // ======================
+    // DATE LOGIC
+    // ======================
+
+    const today = new Date();
+    const diffDays = Math.floor((today - START_DATE) / (1000 * 60 * 60 * 24)) + 1;
+    const availableBoxes = Math.min(Math.max(diffDays, 0), TOTAL_BOXES);
 
     // ======================
     // MODAL LOGIC
