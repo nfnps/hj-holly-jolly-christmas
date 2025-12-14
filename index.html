@@ -135,7 +135,7 @@
 <body>
   <div class="container">
     <h1>🎄 HJ – Holly Jolly Christmas 🎁</h1>
-    <p class="subtitle">Open only 1 box per day • Starts 14 Dec • Resets 00:00</p>
+    <p class="subtitle">Open only 1 box per day until Christmas • Starts 14 Dec • Resets 00:00</p>
     <div class="grid" id="grid"></div>
   </div>
 
@@ -146,14 +146,14 @@
   <script>
     // 10 Christmas love messages
     const messages = [
-      "Merry Christmas, my love. You are my favorite gift every year 🎄❤️",
+      "Loving you is the easiest and happiest thing I’ve ever done.❤️",
       "Christmas feels warmer because I have you by my side.",
       "You are the reason my holidays are full of smiles and love.",
       "All I want for Christmas is you — today and always.",
       "Thank you for being my safe place, my joy, my Christmas miracle.",
-      "Every snowflake reminds me how special our love is.",
-      "Being with you is better than any Christmas present.",
-      "My heart chose you, this Christmas and forever.",
+      "I feels at home whenever I’m with you.",
+      "Thanks for being my safe place",
+      "Being loved by you is my favorite feeling in the world.",
       "Love, laughter, and you — that’s my perfect Christmas.",
       "You make my life sparkle brighter than Christmas lights ✨"
     ];
@@ -170,6 +170,12 @@
       }
     };
 
+    const songBoxIndex = Math.floor(Math.random() * 11) + 1;
+    const song = {
+      title: "🎧 Today’s Song for You",
+      text: "I chose this song because it reminds me of you 💗",
+      url: "https://youtu.be/YgF5p2QzhN4?si=_o7yTKwYVjImdy8w"
+    };
     const startDate = new Date('2025-12-14T00:00:00');
     const today = new Date();
     const diffDays = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
