@@ -58,7 +58,13 @@
       font-size: 2rem;
       margin-bottom: 6px;
     }
-    .box:hover {
+    .box.locked {
+      background: #f4f4f4;
+      color: #aaa;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+    .box:hover:not(.locked) {
       transform: translateY(-3px);
       box-shadow: 0 10px 20px rgba(0,0,0,0.12);
     }
@@ -129,7 +135,7 @@
 
     const START_DATE = new Date('2025-12-14T00:00:00');
     const TOTAL_BOXES = 12;
-    
+
     // ======================
     // DATA
     // ======================
@@ -168,6 +174,7 @@
       text: "I chose this song because it reminds me of you 💗",
       url: "https://youtu.be/YgF5p2QzhN4"
     };
+
     // ======================
     // DATE LOGIC
     // ======================
@@ -201,12 +208,18 @@
     // BOX GENERATION
     // ======================
 
-    for (let i = 1; i <= 12; i++) {
+    for (let i = 1; i <= TOTAL_BOXES; i++) {
       const box = document.createElement('div');
       box.className = 'box';
       box.textContent = i;
 
+      if (i > availableBoxes) {
+        box.classList.add('locked');
+      }
+
       box.addEventListener('click', () => {
+        if (i > availableBoxes) return;
+
         if (coupons[i]) {
           const c = coupons[i];
           openModal(`
